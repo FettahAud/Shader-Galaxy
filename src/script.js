@@ -111,7 +111,11 @@ const generateGalaxy = () =>
         fragmentShader: fragment,
         uniforms: {
             uSize: {value: 10. * renderer.getPixelRatio()},
-            uTime: {value: 0}
+            uTime: {value: 0},
+            uSpeed: {value: 0.2},
+            atanValue01: {value: '0'},
+            atanValue02: {value: '2'},
+            lengthParam: {value: '0'},
         }
     })
 
@@ -181,6 +185,11 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  * Generate Galaxy
  */
  generateGalaxy()
+ gui.add(material.uniforms.uSpeed, 'value', 0.01, 5, 0.001).name('speed')
+ gui.add(material.uniforms.atanValue01, 'value', [0, 1, 2]).name('atan 1')
+ gui.add(material.uniforms.atanValue02, 'value', [0, 1, 2]).name('atan 2')
+ gui.add(material.uniforms.lengthParam, 'value', [0, 1, 2, 3, 4, 5]).name('length')
+
 
 /**
  * Animate
